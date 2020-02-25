@@ -1,10 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Корзина</title>
-</head>
-<body>
-    <h2>Корзина</h2>
-</body>
-</html>
+{% extends 'layouts/base.html' %}
+
+
+{% block title %}Управление заказами{% endblock title %}
+
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/basket.css' %}">
+    <div id="basket" class="container">
+        <h3>Управление заказами</h3>
+        <table border="1">
+            <tr>
+                <th>Продукт</th>
+                <th>Категория</th>
+                <th>Производитель</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Статус</th>
+                <th>Управление</th>
+            </tr>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.product.name }}</td>
+                    <td>{{ order.product.category.name }}</td>
+                    <td>{{ order.product.producer.name }}</td>
+                    <td>{{ order.product.price }}</td>
+                    <td>{{ order.count }}</td>
+                    <td>{{ order.status.name }}</td>
+                    <td>
+                        !
+                        <a href="/basket/delete/{{ order.id }}">Delete</a>
+                        |
+                        <a href="/basket/edit/{{ order.id }}">Edit</a>
+                        |
+                        <a href="/basket/confirm/{{ order.id }}">Confirm</a>
+                        |
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock content %}

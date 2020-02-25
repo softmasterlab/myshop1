@@ -20,3 +20,22 @@ def ajax_basket(request):
     Order.objects.create(count=_count, status_id=sid, product_id=pid, user_id=uid)
     response['mess'] = f'Заказ успешно сохранен для {request.user.username}'
     return JsonResponse(response)
+
+
+def upload_basket(request):
+    response = dict()
+    uid = request.user.id
+    orders = Order.objects.filter(user_id=uid)
+    # Подсчет количества товаров
+    count = 0
+    for order in orders:
+        count += order.count
+    response['count'] = count
+    # Подсчет общей стоимости товаров
+    amount = 0
+    for order in orders:
+        amount += order.count * order.product.price
+    response['amount'] = amount
+    # Отправка данных:
+    response['test'] = uid
+    return JsonResponse(response)

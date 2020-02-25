@@ -1,0 +1,16 @@
+#basket {
+    text-align: center;
+    padding-top: 20px;
+}
+
+#basket table {
+    width: 100%;
+    margin-top: 15px;
+}
+
+#basket th,
+#basket td {
+    text-align: center;
+    padding: 10px 5px;
+    font-size: 12pt;
+}
