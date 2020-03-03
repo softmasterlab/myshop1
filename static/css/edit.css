@@ -1,0 +1,15 @@
+#form5 {
+    text-align: left;
+}
+
+#b1, #b2 {
+            width: 150px;
+            margin-left: 5px;
+        }
+        .form-group input {
+            width: 50%;
+            height: 30px;
+        }
+        .form-group textarea {
+            width: 50%;
+        }

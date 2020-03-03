@@ -1,0 +1,24 @@
+{% extends 'layouts/base.html' %}
+
+
+{% block title %}Удаление заказа{% endblock title %}
+
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/delete.css' %}">
+    <div id="delete" class="container">
+        <h3>Удаление заказа</h3>
+        <h4 id="warn">Вы собираетесеь удалить заказ на приобретение товара</h4>
+        <ul id="params">
+            <li>Наименование: {{ order.product.name }}</li>
+            <li>Цена: {{ order.product.price }} uah</li>
+            <li>Количество: {{ order.count }}</li>
+        </ul>
+        <br>
+        <form action="/basket/delete/{{ order.id }}" method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger" value="Подтвердите удаление">
+        </form>
+    </div>
+{% endblock %}

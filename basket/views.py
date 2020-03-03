@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Order
+from .forms import OrderForm
 
 
 def index(request):
@@ -11,11 +12,29 @@ def index(request):
 
 
 def delete(request, oid: int):
-    pass
+    data = dict()
+    order = Order.objects.get(id=oid)
+    if request.method == 'GET':
+        data['order'] = order
+        return render(request, 'basket/delete.html', context=data)
+    elif request.method == 'POST':
+        order.delete()
+        return redirect('/basket')
 
 
 def edit(request, oid: int):
-    pass
+    data = dict()
+    order = Order.objects.get(id=oid)
+    if request.method == 'GET':
+        data['order'] = order
+        data['form'] = OrderForm(instance=order)
+        return render(request, 'basket/edit.html', context=data)
+    elif request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order.count = form.cleaned_data['count']
+            order.save()
+        return redirect('/basket')
 
 
 def confirm(request, oid: int):

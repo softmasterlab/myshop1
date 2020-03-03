@@ -1,0 +1,17 @@
+#delete {
+    text-align: center;
+    padding-top: 20px;
+}
+
+#warn {
+    color: red;
+}
+
+#params li {
+    font-size: 14pt;
+}
+
+#delete input {
+    font-weight: bold;
+    font-size: 12pt;
+}
