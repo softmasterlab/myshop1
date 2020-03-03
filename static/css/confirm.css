@@ -1,0 +1,31 @@
+#confirm {
+    text-align: center;
+    padding-top: 20px;
+}
+
+#warn {
+    color: darkcyan;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 15pt;
+}
+
+#params li {
+    font-size: 14pt;
+    font-weight: bold;
+    font-style: italic;
+    color: gray;
+}
+
+#confirm span {
+    color: navy;
+}
+
+#am {
+    color: red;
+}
+
+#confirm input {
+    font-weight: bold;
+    font-size: 12pt;
+}
